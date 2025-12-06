@@ -30,6 +30,7 @@ type freshIDRange struct {
 
 func partA(freshIDRanges []freshIDRange, availableIngredientIDs []string) {
 	matched := 0
+
 	for _, id := range availableIngredientIDs {
 		availableIngredientID := utils.ToInt(id)
 		for _, freshIDRange := range freshIDRanges {
@@ -39,6 +40,7 @@ func partA(freshIDRanges []freshIDRange, availableIngredientIDs []string) {
 			}
 		}
 	}
+
 	fmt.Printf("Part A result: %d\n", matched)
 }
 
