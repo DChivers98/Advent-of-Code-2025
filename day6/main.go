@@ -10,6 +10,11 @@ import (
 func main() {
 	lines := utils.ReadFileLines("./data/day6.txt")
 
+	partA(lines)
+	partB(lines)
+}
+
+func partA(lines []string) {
 	var calculations [][]string
 	for _, line := range lines {
 		for i, element := range strings.Fields(line) {
@@ -21,10 +26,6 @@ func main() {
 		}
 	}
 
-	partA(calculations)
-}
-
-func partA(calculations [][]string) {
 	total := 0
 	for _, calculation := range calculations {
 		switch calculation[4] {
@@ -44,4 +45,61 @@ func partA(calculations [][]string) {
 	}
 
 	fmt.Printf("Part A result: %d\n", total)
+}
+
+func partB(lines []string) {
+	rows, cols := len(lines), len(lines[0])
+	total, blockStart := 0, 0
+
+	processBlock := func(end int) {
+		operator := byte(' ')
+		for col := blockStart; col < end; col++ {
+			if char := lines[rows-1][col]; char != ' ' {
+				operator = char
+				break
+			}
+		}
+
+		value := 0
+		if operator == '+' {
+			value = 0
+		} else {
+			value = 1
+		}
+		for col := blockStart; col < end; col++ {
+			num := 0
+			for row := 0; row < rows-1; row++ {
+				if lines[row][col] != ' ' {
+					num = num*10 + int(lines[row][col]-'0')
+				}
+			}
+			if operator == '+' {
+				value += num
+			} else {
+				value *= num
+			}
+		}
+
+		total += value
+	}
+
+	for col := range cols {
+		isBlankCol := true
+		for row := range rows {
+			if lines[row][col] != ' ' {
+				isBlankCol = false
+				break
+			}
+		}
+		if isBlankCol {
+			processBlock(col)
+			blockStart = col + 1
+		}
+	}
+
+	if blockStart < cols {
+		processBlock(cols)
+	}
+
+	fmt.Printf("Part B result: %d\n", total)
 }
