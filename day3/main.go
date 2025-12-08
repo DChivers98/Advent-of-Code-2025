@@ -7,19 +7,10 @@ import (
 )
 
 func main() {
-	banks := utils.ReadFileLines("./data/day3.txt")
+	banks := utils.ReadFileLinesIntoIntGrid("./data/day3.txt")
 
-	intBanks := make([][]int, 0, len(banks))
-	for _, bank := range banks {
-		bankVoltages := make([]int, 0, len(bank))
-		for _, character := range bank {
-			bankVoltages = append(bankVoltages, int(character-'0'))
-		}
-		intBanks = append(intBanks, bankVoltages)
-	}
-
-	partA(intBanks)
-	partB(intBanks)
+	partA(banks)
+	partB(banks)
 }
 
 func partA(banks [][]int) {

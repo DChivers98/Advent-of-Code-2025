@@ -9,6 +9,64 @@ import (
 	"strings"
 )
 
+type Position struct {
+	Row, Col int
+}
+
+func ReadFileLinesIntoIntGrid(fileName string) [][]int {
+	file, err := os.Open(fileName)
+	if err != nil {
+		log.Fatalf("Failed to open file: %s", err)
+	}
+	defer file.Close() //nolint:errcheck
+
+	scanner := bufio.NewScanner(file)
+
+	var grid [][]int
+	for row := 0; scanner.Scan(); row++ {
+		var nums []int
+		for _, char := range scanner.Text() {
+			nums = append(nums, int(char-'0'))
+		}
+		grid = append(grid, nums)
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatalf("Error reading file %s", err)
+	}
+
+	return grid
+}
+
+func ReadFileLinesIntoGrid(fileName string, startPosition rune) ([][]string, Position) {
+	file, err := os.Open(fileName)
+	if err != nil {
+		log.Fatalf("Failed to open file: %s", err)
+	}
+	defer file.Close() //nolint:errcheck
+
+	scanner := bufio.NewScanner(file)
+
+	var start Position
+	var grid [][]string
+	for row := 0; scanner.Scan(); row++ {
+		var chars []string
+		for col, char := range scanner.Text() {
+			chars = append(chars, string(char))
+			if startPosition != 0 && char == startPosition {
+				start = Position{row, col}
+			}
+		}
+		grid = append(grid, chars)
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatalf("Error reading file %s", err)
+	}
+
+	return grid, start
+}
+
 func ReadFileLinesSplitOnBlank(filename string) ([]string, []string) {
 	file, err := os.Open(filename)
 	if err != nil {

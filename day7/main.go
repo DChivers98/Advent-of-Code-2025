@@ -6,28 +6,13 @@ import (
 	"github.com/DChivers98/Advent-of-Code-2025/utils"
 )
 
-type Position struct {
-	row, col int
-}
+type Position = utils.Position
 
 func main() {
-	lines := utils.ReadFileLines("./data/day7.txt")
+	manifold, start := utils.ReadFileLinesIntoGrid("./data/day7.txt", 'S')
 
-	var startPosition Position
-	var manifold [][]string
-	for row, line := range lines {
-		var chars []string
-		for col, char := range line {
-			chars = append(chars, string(char))
-			if char == 'S' {
-				startPosition = Position{row, col}
-			}
-		}
-		manifold = append(manifold, chars)
-	}
-
-	partA(manifold, startPosition)
-	partB(manifold, startPosition)
+	partA(manifold, start)
+	partB(manifold, start)
 }
 
 func partA(manifold [][]string, start Position) {
@@ -35,7 +20,7 @@ func partA(manifold [][]string, start Position) {
 
 	var walkDown func(int, int) int
 	walkDown = func(row, col int) int {
-		position := Position{row, col}
+		position := Position{Row: row, Col: col}
 
 		if row < 0 || row >= len(manifold) || col < 0 || col >= len(manifold[row]) || visited[position] {
 			return 0
@@ -59,7 +44,7 @@ func partA(manifold [][]string, start Position) {
 		return splitCount
 	}
 
-	fmt.Printf("Part A result: %d\n", walkDown(start.row, start.col))
+	fmt.Printf("Part A result: %d\n", walkDown(start.Row, start.Col))
 }
 
 func partB(manifold [][]string, start Position) {
@@ -68,7 +53,7 @@ func partB(manifold [][]string, start Position) {
 
 	var walkDown func(int, int) int
 	walkDown = func(row, col int) int {
-		position := Position{row, col}
+		position := Position{Row: row, Col: col}
 
 		if row < 0 || row >= len(manifold) || col < 0 || col >= len(manifold[row]) || visited[position] {
 			return 0
@@ -101,5 +86,5 @@ func partB(manifold [][]string, start Position) {
 		return pathCount
 	}
 
-	fmt.Printf("Part B result: %d\n", walkDown(start.row, start.col))
+	fmt.Printf("Part B result: %d\n", walkDown(start.Row, start.Col))
 }

@@ -7,16 +7,7 @@ import (
 )
 
 func main() {
-	lines := utils.ReadFileLines("./data/day4.txt")
-
-	var grid [][]string
-	for _, line := range lines {
-		var chars []string
-		for _, char := range line {
-			chars = append(chars, string(char))
-		}
-		grid = append(grid, chars)
-	}
+	grid, _ := utils.ReadFileLinesIntoGrid("./data/day4.txt", 0)
 
 	partA(grid)
 	partB(grid)
