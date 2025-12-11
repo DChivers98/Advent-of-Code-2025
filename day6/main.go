@@ -10,11 +10,11 @@ import (
 func main() {
 	lines := utils.ReadFileLines("./data/day6.txt")
 
-	partA(lines)
-	partB(lines)
+	part1(lines)
+	part2(lines)
 }
 
-func partA(lines []string) {
+func part1(lines []string) {
 	var calculations [][]string
 	for _, line := range lines {
 		for i, element := range strings.Fields(line) {
@@ -44,10 +44,10 @@ func partA(lines []string) {
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", total)
+	fmt.Printf("Part 1 result: %d\n", total)
 }
 
-func partB(lines []string) {
+func part2(lines []string) {
 	rows, cols := len(lines), len(lines[0])
 	total, blockStart := 0, 0
 
@@ -101,5 +101,5 @@ func partB(lines []string) {
 		processBlock(cols)
 	}
 
-	fmt.Printf("Part B result: %d\n", total)
+	fmt.Printf("Part 2 result: %d\n", total)
 }

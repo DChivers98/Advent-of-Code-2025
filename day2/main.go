@@ -21,11 +21,11 @@ func main() {
 		upperBounds = append(upperBounds, utils.ToInt(parts[1]))
 	}
 
-	partA(lowerBounds, upperBounds)
-	partB(lowerBounds, upperBounds)
+	part1(lowerBounds, upperBounds)
+	part2(lowerBounds, upperBounds)
 }
 
-func partA(lowerBounds []int, upperBounds []int) {
+func part1(lowerBounds []int, upperBounds []int) {
 	count := 0
 	for idx := range lowerBounds {
 		lowerBound, upperBound := lowerBounds[idx], upperBounds[idx]
@@ -40,10 +40,10 @@ func partA(lowerBounds []int, upperBounds []int) {
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", count)
+	fmt.Printf("Part 1 result: %d\n", count)
 }
 
-func partB(lowerBounds []int, upperBounds []int) {
+func part2(lowerBounds []int, upperBounds []int) {
 	count := 0
 	for idx := range lowerBounds {
 		lowerBound, upperBound := lowerBounds[idx], upperBounds[idx]
@@ -61,5 +61,5 @@ func partB(lowerBounds []int, upperBounds []int) {
 		}
 	}
 
-	fmt.Printf("Part B result: %d\n", count)
+	fmt.Printf("Part 2 result: %d\n", count)
 }

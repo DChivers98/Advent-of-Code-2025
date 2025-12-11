@@ -9,11 +9,11 @@ import (
 func main() {
 	grid, _ := utils.ReadFileLinesIntoGrid("./data/day4.txt", 0)
 
-	partA(grid)
-	partB(grid)
+	part1(grid)
+	part2(grid)
 }
 
-func partA(grid [][]string) {
+func part1(grid [][]string) {
 	total := 0
 	directions := [][2]int{
 		{1, 0},
@@ -46,10 +46,10 @@ func partA(grid [][]string) {
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", total)
+	fmt.Printf("Part 1 result: %d\n", total)
 }
 
-func partB(grid [][]string) {
+func part2(grid [][]string) {
 	total := 0
 	directions := [][2]int{
 		{1, 0},
@@ -96,5 +96,5 @@ func partB(grid [][]string) {
 		}
 	}
 
-	fmt.Printf("Part B result: %d\n", total)
+	fmt.Printf("Part 2 result: %d\n", total)
 }

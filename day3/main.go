@@ -9,11 +9,11 @@ import (
 func main() {
 	banks := utils.ReadFileLinesIntoIntGrid("./data/day3.txt")
 
-	partA(banks)
-	partB(banks)
+	part1(banks)
+	part2(banks)
 }
 
-func partA(banks [][]int) {
+func part1(banks [][]int) {
 	total := 0
 
 	for _, bank := range banks {
@@ -29,10 +29,10 @@ func partA(banks [][]int) {
 		total += maxVoltage
 	}
 
-	fmt.Printf("Part A result: %d\n", total)
+	fmt.Printf("Part 1 result: %d\n", total)
 }
 
-func partB(banks [][]int) {
+func part2(banks [][]int) {
 	total := 0
 
 	for _, bank := range banks {
@@ -55,5 +55,5 @@ func partB(banks [][]int) {
 		total += voltage
 	}
 
-	fmt.Printf("Part B result: %d\n", total)
+	fmt.Printf("Part 2 result: %d\n", total)
 }

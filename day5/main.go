@@ -20,15 +20,15 @@ func main() {
 		}
 	}
 
-	partA(freshIDRanges, availableIngredientIDs)
-	partB(freshIDRanges)
+	part1(freshIDRanges, availableIngredientIDs)
+	part2(freshIDRanges)
 }
 
 type freshIDRange struct {
 	lowerBound, higherBound int
 }
 
-func partA(freshIDRanges []freshIDRange, availableIngredientIDs []string) {
+func part1(freshIDRanges []freshIDRange, availableIngredientIDs []string) {
 	matched := 0
 
 	for _, id := range availableIngredientIDs {
@@ -41,10 +41,10 @@ func partA(freshIDRanges []freshIDRange, availableIngredientIDs []string) {
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", matched)
+	fmt.Printf("Part 1 result: %d\n", matched)
 }
 
-func partB(freshIDRanges []freshIDRange) {
+func part2(freshIDRanges []freshIDRange) {
 	sort.Slice(freshIDRanges, func(a, b int) bool {
 		return freshIDRanges[a].lowerBound < freshIDRanges[b].lowerBound
 	})
@@ -64,5 +64,5 @@ func partB(freshIDRanges []freshIDRange) {
 
 	total += currentID.higherBound - currentID.lowerBound + 1
 
-	fmt.Printf("Part B result: %d\n", total)
+	fmt.Printf("Part 2 result: %d\n", total)
 }

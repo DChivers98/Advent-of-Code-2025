@@ -11,11 +11,11 @@ type Position = utils.Position
 func main() {
 	manifold, start := utils.ReadFileLinesIntoGrid("./data/day7.txt", 'S')
 
-	partA(manifold, start)
-	partB(manifold, start)
+	part1(manifold, start)
+	part2(manifold, start)
 }
 
-func partA(manifold [][]string, start Position) {
+func part1(manifold [][]string, start Position) {
 	visited := make(map[Position]bool)
 
 	var walkDown func(int, int) int
@@ -44,10 +44,10 @@ func partA(manifold [][]string, start Position) {
 		return splitCount
 	}
 
-	fmt.Printf("Part A result: %d\n", walkDown(start.Row, start.Col))
+	fmt.Printf("Part 1 result: %d\n", walkDown(start.Row, start.Col))
 }
 
-func partB(manifold [][]string, start Position) {
+func part2(manifold [][]string, start Position) {
 	visited := make(map[Position]bool)
 	pathCountCache := map[Position]int{}
 
@@ -86,5 +86,5 @@ func partB(manifold [][]string, start Position) {
 		return pathCount
 	}
 
-	fmt.Printf("Part B result: %d\n", walkDown(start.Row, start.Col))
+	fmt.Printf("Part 2 result: %d\n", walkDown(start.Row, start.Col))
 }

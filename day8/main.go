@@ -35,11 +35,11 @@ func main() {
 		junctionBoxes = append(junctionBoxes, junctionBox)
 	}
 
-	partA(junctionBoxes)
-	partB(junctionBoxes)
+	part1(junctionBoxes)
+	part2(junctionBoxes)
 }
 
-func partA(junctionBoxes []JunctionBox) {
+func part1(junctionBoxes []JunctionBox) {
 	var distances []Distance
 	for i := range junctionBoxes {
 		for j := i + 1; j < len(junctionBoxes); j++ {
@@ -101,10 +101,10 @@ func partA(junctionBoxes []JunctionBox) {
 		total *= len(circuit)
 	}
 
-	fmt.Printf("Part A result: %d\n", total)
+	fmt.Printf("Part 1 result: %d\n", total)
 }
 
-func partB(junctionBoxes []JunctionBox) {
+func part2(junctionBoxes []JunctionBox) {
 	var distances []Distance
 	for i := range junctionBoxes {
 		for j := i + 1; j < len(junctionBoxes); j++ {
@@ -163,5 +163,5 @@ func partB(junctionBoxes []JunctionBox) {
 		}
 	}
 
-	fmt.Printf("Part B result: %d\n", lastJunctionBox.X*lastConnectingJunctionBox.X)
+	fmt.Printf("Part 2 result: %d\n", lastJunctionBox.X*lastConnectingJunctionBox.X)
 }

@@ -18,19 +18,16 @@ func main() {
 		redTiles = append(redTiles, Coordinate{utils.ToInt(parts[0]), utils.ToInt(parts[1])})
 	}
 
-	partA(redTiles)
+	part1(redTiles)
 }
 
-func partA(redTiles []Coordinate) {
+func part1(redTiles []Coordinate) {
 	var maxArea int
-	for firstTileIndex := range redTiles {
-		for secondTileIndex := firstTileIndex + 1; secondTileIndex < len(redTiles); secondTileIndex++ {
-			x1, y1 := redTiles[firstTileIndex].X, redTiles[firstTileIndex].Y
-			x2, y2 := redTiles[secondTileIndex].X, redTiles[secondTileIndex].Y
-
-			maxArea = max(maxArea, (utils.AbsVal(x2-x1)+1)*(utils.AbsVal(y2-y1)+1))
+	for i, firstTile := range redTiles {
+		for _, secondTile := range redTiles[i+1:] {
+			maxArea = max(maxArea, (utils.AbsVal(secondTile.X-firstTile.X)+1)*(utils.AbsVal(secondTile.Y-firstTile.Y)+1))
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", maxArea)
+	fmt.Printf("Part 1 result: %d\n", maxArea)
 }

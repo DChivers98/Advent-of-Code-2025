@@ -16,11 +16,11 @@ func main() {
 		moveAmmounts = append(moveAmmounts, utils.ToInt(line[1:]))
 	}
 
-	partA(directions, moveAmmounts)
-	partB(directions, moveAmmounts)
+	part1(directions, moveAmmounts)
+	part2(directions, moveAmmounts)
 }
 
-func partA(directions []string, moveAmmounts []int) {
+func part1(directions []string, moveAmmounts []int) {
 	total := 0
 	currentPosition := 50
 
@@ -38,10 +38,10 @@ func partA(directions []string, moveAmmounts []int) {
 		}
 	}
 
-	fmt.Printf("Part A result: %d\n", total)
+	fmt.Printf("Part 1 result: %d\n", total)
 }
 
-func partB(directions []string, moveAmounts []int) {
+func part2(directions []string, moveAmounts []int) {
 	total := 0
 	currentPosition := 50
 
@@ -67,5 +67,5 @@ func partB(directions []string, moveAmounts []int) {
 		}
 	}
 
-	fmt.Printf("Part B result: %d\n", total)
+	fmt.Printf("Part 2 result: %d\n", total)
 }
